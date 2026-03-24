@@ -8,7 +8,7 @@ import com.emby.action.StatusAction;
 import com.emby.entity.Config;
 import com.emby.entity.Status;
 import com.emby.entity.Views;
-import com.github.promeg.pinyinhelper.Pinyin;
+import com.emby.enums.PinyinMode;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -92,7 +92,17 @@ public class EmbyUtil {
                         throw new RuntimeException("JSON解析失败");
                     }
                     String name = body.get("Name").getAsString();
-                    String pinyin = Pinyin.toPinyin(name, " ").toLowerCase();
+
+                    String pinyin = "";
+
+                    PinyinMode pinyinMode = config.getPinyinMode();
+                    if (pinyinMode == PinyinMode.PINYIN) {
+                        pinyin = PinyinUtils.getPinyin(name, " ").toLowerCase();
+                    }
+
+                    if (pinyinMode == PinyinMode.FIRST_LETTER) {
+                        pinyin = PinyinUtils.getFirstLetter(name, " ").toLowerCase();
+                    }
                     log.debug("name: {} , pinyin: {}", name, pinyin);
                     body.addProperty("SortName", pinyin);
                     body.addProperty("ForcedSortName", pinyin);

@@ -9,6 +9,7 @@ import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.Scheduler;
 import com.emby.entity.Config;
 import com.emby.entity.Views;
+import com.emby.enums.PinyinMode;
 import com.emby.task.PinyinTask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,11 +26,13 @@ public class ConfigUtil {
     public static final Scheduler SCHEDULER = CronUtil.getScheduler();
 
     static {
-        CONFIG.setHost("")
+        CONFIG
+                .setHost("")
                 .setKey("")
                 .setDebug(false)
                 .setCron(false)
                 .setCronStr("0 1 * * *")
+                .setPinyinMode(PinyinMode.PINYIN)
                 .setIsInnerIP(false)
                 .setCronIds(new ArrayList<>());
     }

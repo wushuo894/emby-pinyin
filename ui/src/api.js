@@ -18,6 +18,9 @@ let put = async (url, body) => {
 
 let fetch_ = async (url, method, body) => {
     let headers = {}
+    if (body) {
+        headers['Content-Type'] = 'application/json'
+    }
     return await fetch(url, {
         'method': method,
         'body': body ? JSON.stringify(body) : null,

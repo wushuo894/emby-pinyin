@@ -12,6 +12,12 @@
         <el-switch v-model:model-value="config.cron"/>
         <el-input v-model:model-value="config.cronStr" placeholder="0 1 * * *" :disabled="!config.cron"/>
       </el-form-item>
+      <el-form-item label="PinyinMode" v-model="config.pinyinMode">
+        <el-select>
+          <el-option value="PINYIN" label="PINYIN"/>
+          <el-option value="FIRST_LETTER" label="FIRST_LETTER"/>
+        </el-select>
+      </el-form-item>
       <el-form-item label="禁止公网访问">
         <el-switch v-model:model-value="config.isInnerIP"/>
       </el-form-item>
@@ -42,6 +48,7 @@ const config = ref({
   'debug': false,
   'cron': false,
   'cronStr': '',
+  'pinyinMode': 'PINYIN',
   'isInnerIP': false
 })
 const version = ref("None")
