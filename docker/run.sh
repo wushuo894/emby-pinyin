@@ -1,7 +1,7 @@
 #!/bin/sh
 
 path="./"
-jar="emby-pinyin-jar-with-dependencies.jar"
+jar="emby-pinyin.jar"
 jar_path=$path$jar
 
 stop() {

@@ -27,7 +27,7 @@ public class MavenUtil {
             if (jar.isFile() && List.of("exe", "jar").contains(extName)) {
                 @Cleanup
                 JarFile jarFile = new JarFile(jar);
-                JarEntry jarEntry = jarFile.getJarEntry("META-INF/maven/com.emby/EmbyPinyin/pom.xml");
+                JarEntry jarEntry = jarFile.getJarEntry("META-INF/maven/com.emby/emby-pinyin/pom.xml");
                 InputStream inputStream = jarFile.getInputStream(jarEntry);
                 String s = IoUtil.readUtf8(inputStream);
                 version = ReUtil.get("<version>(.*?)</version>", s, 1);

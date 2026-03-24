@@ -1,13 +1,13 @@
-# EmbyPinyin
+# emby-pinyin
 
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wushuo894/EmbyPinyin/maven.yml?branch=master)](https://github.com/wushuo894/EmbyPinyin/actions/workflows/maven.yml)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wushuo894/EmbyPinyin?color=blue&label=download&sort=semver)](https://github.com/wushuo894/EmbyPinyin/releases/latest)
-[![GitHub all releases](https://img.shields.io/github/downloads/wushuo894/EmbyPinyin/total?color=blue&label=github%20downloads)](https://github.com/wushuo894/EmbyPinyin/releases)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wushuo894/emby-pinyin/maven.yml?branch=master)](https://github.com/wushuo894/emby-pinyin/actions/workflows/maven.yml)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wushuo894/emby-pinyin?color=blue&label=download&sort=semver)](https://github.com/wushuo894/EmbyPinyin/releases/latest)
+[![GitHub all releases](https://img.shields.io/github/downloads/wushuo894/emby-pinyin/total?color=blue&label=github%20downloads)](https://github.com/wushuo894/emby-pinyin/releases)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wushuo894/emby-pinyin)](https://hub.docker.com/r/wushuo894/emby-pinyin)
 
 Emby 支持拼音首字母排序
 
-![Xnip2024-09-25_13-29-32.jpg](https://raw.githubusercontent.com/wushuo894/EmbyPinyin/master/images/Xnip2024-09-25_13-29-32.jpg)
+![Xnip2024-09-25_13-29-32.jpg](https://raw.githubusercontent.com/wushuo894/emby-pinyin/master/images/Xnip2024-09-25_13-29-32.jpg)
 
 ## Docker部署
 
