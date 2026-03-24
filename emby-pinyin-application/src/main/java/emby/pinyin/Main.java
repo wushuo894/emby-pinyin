@@ -1,0 +1,45 @@
+package emby.pinyin;
+
+import com.github.promeg.pinyinhelper.Pinyin;
+import com.github.promeg.pinyinhelper.PinyinMapDict;
+import emby.pinyin.util.ConfigUtil;
+import emby.pinyin.util.MavenUtil;
+import emby.pinyin.util.ServerUtil;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Slf4j
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, String[]> map = new HashMap<>();
+        map.put("重庆", new String[]{"chong", "qing"});
+        map.put("重启", new String[]{"chong", "qi"});
+        map.put("重回", new String[]{"chong", "hui"});
+        map.put("重生", new String[]{"chong", "sheng"});
+        map.put("重来", new String[]{"chong", "lai"});
+        map.put("调教", new String[]{"tiao", "jiao"});
+
+        Pinyin.init(Pinyin.newConfig()
+                .with(new PinyinMapDict() {
+                    @Override
+                    public Map<String, String[]> mapping() {
+                        return map;
+                    }
+                }));
+
+        try {
+            ConfigUtil.load();
+            ServerUtil
+                    .create(args)
+                    .start();
+            String version = MavenUtil.getVersion();
+            log.info("version {}", version);
+            Runtime.getRuntime()
+                    .addShutdownHook(new Thread(ServerUtil::stop));
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+}

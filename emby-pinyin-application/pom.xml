@@ -78,7 +78,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.emby.Main</mainClass>
+                            <mainClass>emby.pinyin.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
