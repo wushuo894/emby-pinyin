@@ -102,8 +102,8 @@
                         </goals>
                         <configuration>
                             <headerType>console</headerType>
-                            <outfile>target/emby-pinyin-launcher.exe</outfile>
-                            <jar>target/emby-pinyin-jar-with-dependencies.jar</jar>
+                            <outfile>target/emby-pinyin.exe</outfile>
+                            <jar>target/emby-pinyin.jar</jar>
                             <errTitle>Java environment is required!</errTitle>
                             <chdir>.</chdir>
                             <priority>normal</priority>
@@ -112,7 +112,7 @@
                             <stayAlive>false</stayAlive>
                             <restartOnCrash>false</restartOnCrash>
                             <jre>
-                                <path>jre/bin;%JAVA_HOME%/bin;%PATH%</path>
+                                <path>%JAVA_HOME%/bin;%PATH%</path>
                                 <minVersion>17</minVersion>
                                 <opts>
                                     <opt>-Xms60m -Xmx512m -Xss256k</opt>

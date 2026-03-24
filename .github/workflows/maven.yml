@@ -43,9 +43,8 @@ jobs:
           append_body: false
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            ./target/emby-pinyin-jar-with-dependencies.jar
-            ./target/emby-pinyin-launcher.exe
-            ./emby-pinyin.win.x86_64.zip
+            ./target/emby-pinyin.jar
+            ./target/emby-pinyin.exe
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx

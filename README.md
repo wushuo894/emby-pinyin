@@ -7,7 +7,8 @@
 
 Emby 支持拼音首字母排序
 
-![Xnip2024-09-25_13-29-32.jpg](https://raw.githubusercontent.com/wushuo894/emby-pinyin/master/images/Xnip2024-09-25_13-29-32.jpg)
+![screenshot.png](https://raw.githubusercontent.com/wushuo894/emby-pinyin/master/images/screenshot.png#gh-light-mode-only)
+![screenshot-dark.png](https://raw.githubusercontent.com/wushuo894/emby-pinyin/master/images/screenshot-dark.png#gh-dark-mode-only)
 
 ## Docker部署
 
