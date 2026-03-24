@@ -2,7 +2,7 @@
   <el-dialog v-model="dialogVisible" title="日志" center v-if="dialogVisible" @close="close" class="logs-dialog">
     <div style="width: 100%;justify-content: space-between;align-items: center;" class="auto">
       <el-checkbox-group v-model:model-value="selectLevels" @change="()=>getHtmlLogs()">
-        <el-checkbox v-for="item in levels" :label="item" size="large"/>
+        <el-checkbox v-for="item in levels" :key="item" :label="item" :value="item" size="large"/>
       </el-checkbox-group>
       <div style="display: flex;">
         <el-select
@@ -26,9 +26,7 @@
         <el-button icon="Delete" bg text @click="clear" :loading="clearLoading"/>
       </div>
     </div>
-    <div id="#logs" style="background-color:#2e3440ff;
-                  color:#d8dee9ff;
-                  margin-top: 5px;"
+    <div class="content"
          v-loading="loading">
       <el-scrollbar ref="scrollbarRef" height="450">
         <div ref="innerRef" style="min-height: 400px;" v-html="htmlLogs">
@@ -39,9 +37,22 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
-import {codeToHtml} from 'shiki'
+import {onMounted, ref} from "vue";
+import {createHighlighterCore, createOnigurumaEngine} from 'shiki'
 import api from "./api.js";
+import log from 'shiki/langs/log'
+import nord from 'shiki/themes/nord'
+import wasm from 'shiki/wasm'
+
+let highlighter = undefined
+onMounted(async () => {
+  highlighter = await createHighlighterCore({
+    themes: [nord],
+    langs: [log],
+    engine: createOnigurumaEngine(wasm)
+  })
+})
+
 
 const dialogVisible = ref(false)
 const loading = ref(true)
@@ -62,7 +73,7 @@ const getHtmlLogs = async () => {
     log = log.filter(it => selectLoggerNames.value.indexOf(it['loggerName']) > -1)
   }
   let code = log.map(it => it['message']).join('\r\n');
-  htmlLogs.value = await codeToHtml(code, {
+  htmlLogs.value = highlighter.codeToHtml(code, {
     lang: 'log',
     theme: 'nord'
   })
@@ -86,7 +97,7 @@ const clearLoading = ref(false)
 const clear = () => {
   clearLoading.value = true
   api.del('api/logs')
-      .then(res => {
+      .then(() => {
         getLogs();
       })
       .finally(() => {
@@ -114,7 +125,7 @@ const getLogs = () => {
       })
 }
 
-let close = ()=>{
+let close = () => {
   htmlLogs.value = ''
   loggerNames.value = []
   selectLoggerNames.value = []
@@ -128,5 +139,13 @@ defineExpose({show})
   .logs-dialog {
     width: 1000px;
   }
+}
+
+.content {
+  background-color: #2e3440ff;
+  color: #d8dee9ff;
+  margin-top: 4px;
+  padding: 4px;
+  border-radius: var(--el-border-radius-base);
 }
 </style>

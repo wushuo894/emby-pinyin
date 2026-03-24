@@ -3,13 +3,93 @@
     padding: 0;
 }
 
+html.dark {
+    /* 自定义深色背景颜色 */
+    --el-bg-color: #2D2E2F;
+    --el-bg-color-overlay: var(--el-bg-color);
+    --el-fill-color-blank: var(--el-bg-color);
+    --el-collapse-header-bg-color: none;
+    --el-collapse-content-bg-color: none;
+    /* 深色模式下边框颜色调整，使其更融合 */
+    --el-border-color: #414243;
+    --el-border-color-light: #4C4D4F;
+}
+
+:root {
+    /* 全局圆角优化：更圆润 */
+    --el-border-radius-small: 8px;
+    --el-border-radius-base: 12px;
+    --el-border-radius-round: 24px;
+
+    --el-collapse-item-content-padding: 16px;
+
+    /* 全局边框淡化：使用更浅的颜色 */
+    --el-border-color: var(--el-border-color-lighter);
+    --el-border-color-light: var(--el-border-color-extra-light);
+
+    /* 字体优化：优先使用萍方和微软雅黑 */
+    --el-font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+
+    /* 订阅卡片列数 */
+    --grid-columns: 1;
+}
+
+/* 优化卡片样式：去除厚重边框，增加柔和阴影 */
+.el-card {
+    --el-card-border-radius: 16px;
+
+    border: 1px solid var(--el-border-color-extra-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+html.dark .el-card {
+    border: 1px solid var(--el-border-color);
+    box-shadow: none;
+    background-color: #343536; /* 稍微提亮一点背景以区分 */
+}
+
+/* 标签圆角 */
+.el-tag {
+    border-radius: 6px;
+    border-width: 0; /* 保持原有的去边框 */
+}
+
+/* 优化输入框和选择器：更圆润，边框更淡 */
+.el-input__wrapper,
+.el-select__wrapper,
+.el-textarea__inner {
+    box-shadow: 0 0 0 1px var(--el-border-color) inset; /* 使用我们定义的淡化后的变量 */
+}
+
+/* 聚焦时保持高亮但不过分刺眼 */
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused,
+.el-textarea__inner:focus {
+    box-shadow: 0 0 0 1px var(--el-color-primary) inset;
+}
+
+/* 下拉弹出层圆角优化 */
+.el-select__popper,
+.el-select__popper .el-select-dropdown {
+    border-radius: var(--el-border-radius-base);
+    overflow: hidden;
+}
+
+.el-select-dropdown__item {
+    border-radius: var(--el-border-radius-small);
+    margin: 2px 8px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+}
 
 body, html, #app {
     height: 100%;
     width: 100%;
 }
 
-#app{
+#app {
     display: flex;
     justify-content: center;
     align-items: center;

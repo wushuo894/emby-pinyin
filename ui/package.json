@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
-    "@vueuse/core": "^14.2.0",
-    "element-plus": "^2.13.2",
-    "shiki": "^3.22.0",
-    "vue": "^3.5.27"
+    "@vueuse/core": "^14.2.1",
+    "element-plus": "^2.13.6",
+    "shiki": "^4.0.2",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-vue-components": "^32.0.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vue": "^3.5.30"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.4",
-    "vite": "^7.3.1"
+    "@vitejs/plugin-vue": "^6.0.5",
+    "vite": "^8.0.2"
   }
 }
