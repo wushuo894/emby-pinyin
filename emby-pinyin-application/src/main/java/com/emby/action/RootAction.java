@@ -34,7 +34,7 @@ public class RootAction implements BaseAction {
     private final List<String> indexFileNames;
 
     public RootAction() {
-        this("dist", DEFAULT_INDEX_FILE_NAME);
+        this("META-INF/dist", DEFAULT_INDEX_FILE_NAME);
     }
 
     public RootAction(String rootDir) {
