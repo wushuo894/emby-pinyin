@@ -12,8 +12,8 @@
         <el-switch v-model:model-value="config.cron"/>
         <el-input v-model:model-value="config.cronStr" placeholder="0 1 * * *" :disabled="!config.cron"/>
       </el-form-item>
-      <el-form-item label="PinyinMode" v-model="config.pinyinMode">
-        <el-select>
+      <el-form-item label="PinyinMode">
+        <el-select v-model="config.pinyinMode">
           <el-option value="PINYIN" label="PINYIN"/>
           <el-option value="FIRST_LETTER" label="FIRST_LETTER"/>
         </el-select>
